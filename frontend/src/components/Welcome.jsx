@@ -1,0 +1,99 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { LogOut, Heart, Sparkles } from "lucide-react";
+import FlowerField from "@/components/FlowerField";
+import { setAuthed } from "@/App";
+
+export default function Welcome() {
+  const navigate = useNavigate();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const logout = () => {
+    setAuthed(false);
+    navigate("/", { replace: true });
+  };
+
+  return (
+    <div className="relative min-h-screen w-full overflow-hidden" data-testid="welcome-screen">
+      <div className="welcome-sky" />
+
+      {/* Soft sun / moon glow */}
+      <div
+        className="pointer-events-none fixed -top-40 left-1/2 -translate-x-1/2 h-[520px] w-[520px] rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(255,236,246,0.9) 0%, rgba(255,214,236,0.35) 40%, transparent 70%)",
+          filter: "blur(6px)",
+          zIndex: 1,
+        }}
+      />
+
+      {/* Flowers */}
+      {mounted && <FlowerField density={85} />}
+
+      {/* Header */}
+      <header className="relative z-40 flex items-center justify-between px-6 sm:px-10 py-6">
+        <div className="flex items-center gap-2">
+          <div className="h-9 w-9 rounded-xl bg-white/70 backdrop-blur border border-white/60 flex items-center justify-center shadow-sm">
+            <Heart size={16} className="text-pink-400" fill="#f9a8c7" />
+          </div>
+          <span className="font-body text-xs tracking-[0.3em] text-purple-900/70 uppercase">
+            Jardín · Urvi
+          </span>
+        </div>
+        <button
+          onClick={logout}
+          className="group inline-flex items-center gap-2 rounded-full bg-white/60 backdrop-blur border border-white/70 hover:bg-white/80 transition px-4 py-2 text-sm text-purple-900/80 shadow-sm"
+          data-testid="logout-button"
+        >
+          <LogOut size={14} />
+          Salir
+        </button>
+      </header>
+
+      {/* Hero */}
+      <main className="relative z-40 px-6 sm:px-10 pt-6 sm:pt-10">
+        <div className="max-w-3xl">
+          <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.3em] text-purple-500/80 bg-white/50 border border-white/60 backdrop-blur rounded-full px-3 py-1 fade-up">
+            <Sparkles size={12} /> Florecimiento galáctico
+          </div>
+          <h1
+            className="mt-5 font-display text-5xl sm:text-7xl lg:text-8xl leading-[1.02] headline-gradient fade-up fade-up-delay-1"
+            data-testid="welcome-title"
+          >
+            Bienvenida,
+            <br />
+            <span className="font-serif-italic italic">Urvi</span>.
+          </h1>
+          <p className="mt-6 max-w-xl text-base sm:text-lg text-purple-900/70 font-body fade-up fade-up-delay-2">
+            Tulipanes, jazmines y lilas se abren en miles de tonos pastel para recibirte.
+            Respira profundo — la galaxia entera acaba de florecer por ti.
+          </p>
+
+          <div className="mt-8 flex items-center gap-3 fade-up fade-up-delay-3">
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/60 border border-white/70 backdrop-blur px-4 py-2 text-xs tracking-wider uppercase text-purple-900/70">
+              <span className="h-2 w-2 rounded-full bg-pink-300" /> tulipán
+            </span>
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/60 border border-white/70 backdrop-blur px-4 py-2 text-xs tracking-wider uppercase text-purple-900/70">
+              <span className="h-2 w-2 rounded-full bg-amber-200" /> jazmín
+            </span>
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/60 border border-white/70 backdrop-blur px-4 py-2 text-xs tracking-wider uppercase text-purple-900/70">
+              <span className="h-2 w-2 rounded-full bg-purple-300" /> lila
+            </span>
+          </div>
+        </div>
+      </main>
+
+      {/* Tiny signature bottom */}
+      <footer className="relative z-40 absolute bottom-6 left-0 right-0 flex justify-center">
+        <p className="text-[11px] tracking-[0.3em] uppercase text-purple-900/40 font-body">
+          ✦ un pequeño universo en pastel ✦
+        </p>
+      </footer>
+    </div>
+  );
+}

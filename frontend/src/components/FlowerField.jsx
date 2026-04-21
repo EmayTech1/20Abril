@@ -44,46 +44,53 @@ function rand(min, max) {
 export default function FlowerField({ density = 80 }) {
   const flowers = useMemo(() => {
     const list = [];
+    // Each layer is a row-band with evenly spaced columns + tiny jitter,
+    // so the meadow reads symmetric but still organic.
     const layers = [
-      // distant scatter — small flowers dotting the upper meadow
-      { yMin: 12, yMax: 42, sizeMin: 28, sizeMax: 58, delayMax: 700, opacity: 0.8 },
-      // back layer
-      { yMin: 32, yMax: 68, sizeMin: 45, sizeMax: 90, delayMax: 1000, opacity: 0.92 },
-      // mid-back
-      { yMin: 48, yMax: 80, sizeMin: 60, sizeMax: 115, delayMax: 1200, opacity: 0.96 },
-      // mid layer
-      { yMin: 60, yMax: 95, sizeMin: 75, sizeMax: 140, delayMax: 1500, opacity: 1 },
-      // front layer: bigger, bottom
-      { yMin: 75, yMax: 108, sizeMin: 115, sizeMax: 195, delayMax: 1900, opacity: 1 },
+      // [yMin, yMax, sizeMin, sizeMax, cols, rows, jitterX, jitterY, delayMax, opacity]
+      { yMin: 14, yMax: 36, sizeMin: 28, sizeMax: 52, cols: 18, rows: 2, jx: 1.8, jy: 2.5, delayMax: 700, opacity: 0.8 },
+      { yMin: 36, yMax: 58, sizeMin: 48, sizeMax: 80, cols: 15, rows: 2, jx: 2.0, jy: 2.5, delayMax: 1000, opacity: 0.92 },
+      { yMin: 58, yMax: 78, sizeMin: 62, sizeMax: 108, cols: 13, rows: 2, jx: 2.2, jy: 2.8, delayMax: 1200, opacity: 0.96 },
+      { yMin: 76, yMax: 94, sizeMin: 78, sizeMax: 138, cols: 11, rows: 2, jx: 2.5, jy: 3, delayMax: 1500, opacity: 1 },
+      { yMin: 90, yMax: 108, sizeMin: 115, sizeMax: 185, cols: 9, rows: 2, jx: 2.8, jy: 3, delayMax: 1900, opacity: 1 },
     ];
 
-    for (let i = 0; i < density; i++) {
-      const layer = layers[i % layers.length];
-      const type = Math.random();
-      const kind = type < 0.5 ? "tulip" : type < 0.78 ? "lilac" : "jasmine";
-      let color, accent;
-      if (kind === "tulip") {
-        [color, accent] = TULIP_PALETTE[Math.floor(Math.random() * TULIP_PALETTE.length)];
-      } else if (kind === "lilac") {
-        [color, accent] = LILAC_PALETTE[Math.floor(Math.random() * LILAC_PALETTE.length)];
-      } else {
-        [color, accent] = JASMINE_PALETTE[Math.floor(Math.random() * JASMINE_PALETTE.length)];
+    let id = 0;
+    for (const layer of layers) {
+      const rowHeight = (layer.yMax - layer.yMin) / layer.rows;
+      for (let r = 0; r < layer.rows; r++) {
+        // alternate stagger per row so columns interleave — more natural symmetry
+        const stagger = r % 2 === 0 ? 0 : 100 / layer.cols / 2;
+        for (let c = 0; c < layer.cols; c++) {
+          const baseLeft = (c + 0.5) * (100 / layer.cols) + stagger;
+          const baseTop = layer.yMin + (r + 0.5) * rowHeight;
+          const typeRand = Math.random();
+          const kind = typeRand < 0.5 ? "tulip" : typeRand < 0.78 ? "lilac" : "jasmine";
+          let color, accent;
+          if (kind === "tulip") {
+            [color, accent] = TULIP_PALETTE[Math.floor(Math.random() * TULIP_PALETTE.length)];
+          } else if (kind === "lilac") {
+            [color, accent] = LILAC_PALETTE[Math.floor(Math.random() * LILAC_PALETTE.length)];
+          } else {
+            [color, accent] = JASMINE_PALETTE[Math.floor(Math.random() * JASMINE_PALETTE.length)];
+          }
+          list.push({
+            id: id++,
+            kind,
+            color,
+            accent,
+            stem: STEMS[Math.floor(Math.random() * STEMS.length)],
+            left: baseLeft + rand(-layer.jx, layer.jx),
+            top: baseTop + rand(-layer.jy, layer.jy),
+            size: rand(layer.sizeMin, layer.sizeMax),
+            delay: rand(0, layer.delayMax),
+            swayDur: rand(4, 8),
+            rotate: rand(-5, 5),
+            opacity: layer.opacity,
+            z: Math.floor(layer.sizeMin),
+          });
+        }
       }
-      list.push({
-        id: i,
-        kind,
-        color,
-        accent,
-        stem: STEMS[Math.floor(Math.random() * STEMS.length)],
-        left: rand(-2, 100),
-        top: rand(layer.yMin, layer.yMax),
-        size: rand(layer.sizeMin, layer.sizeMax),
-        delay: rand(0, layer.delayMax),
-        swayDur: rand(4, 8),
-        rotate: rand(-8, 8),
-        opacity: layer.opacity,
-        z: Math.floor(layer.sizeMin),
-      });
     }
     // sort by top so lower flowers render on top
     list.sort((a, b) => a.top - b.top);

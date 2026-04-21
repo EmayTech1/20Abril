@@ -127,9 +127,9 @@ export default function Welcome() {
         </div>
       </main>
 
-      <footer className="relative z-[70] fixed bottom-6 left-0 right-0 flex justify-center">
-        <p className="text-[11px] tracking-[0.3em] uppercase text-purple-900/40 font-body">
-          ✦ eres como un pequeño boulevard de esperanzas ✦
+      <footer className="relative z-[70] fixed bottom-6 left-0 right-0 flex justify-center px-4">
+        <p className="text-center max-w-2xl text-[12px] sm:text-sm tracking-wide text-purple-900/55 font-serif-italic italic">
+          Te invito al cine a ver <span className="not-italic font-display font-semibold text-purple-900/70">Boulevard</span> — si no te gusto, al menos habrás visto una buena película.
         </p>
       </footer>
     </div>

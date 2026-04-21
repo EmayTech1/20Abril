@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "@/App.css";
-import { BrowserRouter, Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { Toaster } from "@/components/ui/sonner";
 import Login from "@/components/Login";
 import Welcome from "@/components/Welcome";
@@ -21,7 +21,7 @@ const Protected = ({ children }) => {
 function App() {
   return (
     <div className="App" data-testid="app-root">
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route
@@ -34,7 +34,7 @@ function App() {
           />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
       <Toaster position="top-center" richColors />
     </div>
   );

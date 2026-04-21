@@ -109,9 +109,8 @@ export default function Welcome() {
             <br />
             <span className="font-serif-italic italic">Urvi</span>.
           </h1>
-          <p className="mt-6 max-w-xl text-base sm:text-lg text-purple-900/70 font-body fade-up fade-up-delay-2">
-            Tulipanes, jazmines y lilas se abren en miles de tonos pastel para recibirte.
-            Respira profundo — la galaxia entera acaba de florecer por ti.
+          <p className="mt-6 max-w-xl text-lg sm:text-2xl text-purple-900/75 font-serif-italic italic fade-up fade-up-delay-2">
+            Eres como un pequeño boulevard de esperanzas.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3 fade-up fade-up-delay-3">

@@ -148,10 +148,6 @@ export default function Login() {
                   </>
                 )}
               </button>
-
-              <div className="pt-2 text-center text-[11px] uppercase tracking-[0.28em] text-white/35">
-                · hecho con amor pastel ·
-              </div>
             </form>
           </div>
 

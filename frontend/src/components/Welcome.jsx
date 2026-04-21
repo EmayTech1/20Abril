@@ -130,7 +130,7 @@ export default function Welcome() {
 
       <footer className="relative z-[70] fixed bottom-6 left-0 right-0 flex justify-center">
         <p className="text-[11px] tracking-[0.3em] uppercase text-purple-900/40 font-body">
-          ✦ un pequeño universo en pastel ✦
+          ✦ eres como un pequeño boulevard de esperanzas ✦
         </p>
       </footer>
     </div>

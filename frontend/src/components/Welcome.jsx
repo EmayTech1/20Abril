@@ -116,18 +116,6 @@ export default function Welcome() {
               </span>
             </p>
           </blockquote>
-
-          <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-2 sm:gap-3 fade-up fade-up-delay-3">
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/60 border border-white/70 backdrop-blur px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-xs tracking-wider uppercase text-purple-900/70">
-              <span className="h-2 w-2 rounded-full bg-pink-300" /> tulipán
-            </span>
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/60 border border-white/70 backdrop-blur px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-xs tracking-wider uppercase text-purple-900/70">
-              <span className="h-2 w-2 rounded-full bg-amber-200" /> jazmín
-            </span>
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/60 border border-white/70 backdrop-blur px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-xs tracking-wider uppercase text-purple-900/70">
-              <span className="h-2 w-2 rounded-full bg-purple-300" /> lila
-            </span>
-          </div>
         </div>
       </main>
 

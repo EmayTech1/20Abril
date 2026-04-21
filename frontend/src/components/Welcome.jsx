@@ -110,7 +110,7 @@ export default function Welcome() {
             <span className="font-serif-italic italic">Urvi</span>.
           </h1>
           <p className="mt-6 max-w-xl text-lg sm:text-2xl text-purple-900/75 font-serif-italic italic fade-up fade-up-delay-2">
-            Vamos al cine a ver <span className="not-italic font-display font-semibold text-purple-900/85">Boulevard</span>. Si no te gusto, al menos será una buena película.
+            Eres como un pequeño boulevard de esperanzas.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3 fade-up fade-up-delay-3">
@@ -128,8 +128,8 @@ export default function Welcome() {
       </main>
 
       <footer className="relative z-[70] fixed bottom-6 left-0 right-0 flex justify-center px-4">
-        <p className="text-center max-w-2xl text-[13px] sm:text-base tracking-wide text-purple-900/60 font-serif-italic italic">
-          ✦ Eres como un pequeño boulevard de esperanzas ✦
+        <p className="text-center max-w-2xl text-[12px] sm:text-sm tracking-wide text-purple-900/55 font-serif-italic italic">
+          Vamos al cine a ver <span className="not-italic font-display font-semibold text-purple-900/70">Boulevard</span>. Si no te gusto, al menos será una buena película.
         </p>
       </footer>
     </div>

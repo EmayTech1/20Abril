@@ -59,7 +59,7 @@ export default function Welcome() {
       />
 
       {/* Flowers — abundant bloom */}
-      {mounted && <FlowerField density={170} />}
+      {mounted && <FlowerField density={300} />}
 
       {/* Confetti burst */}
       {mounted && <Confetti count={260} duration={5000} />}

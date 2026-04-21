@@ -45,12 +45,14 @@ export default function FlowerField({ density = 80 }) {
   const flowers = useMemo(() => {
     const list = [];
     const layers = [
-      // back layer: farther, smaller, higher up (behind)
-      { yMin: 35, yMax: 70, sizeMin: 50, sizeMax: 90, delayMax: 900, opacity: 0.9 },
+      // distant scatter — small flowers dotting the upper meadow
+      { yMin: 18, yMax: 45, sizeMin: 32, sizeMax: 62, delayMax: 700, opacity: 0.8 },
+      // back layer
+      { yMin: 38, yMax: 72, sizeMin: 50, sizeMax: 95, delayMax: 1000, opacity: 0.92 },
       // mid layer
-      { yMin: 55, yMax: 92, sizeMin: 70, sizeMax: 130, delayMax: 1400, opacity: 1 },
+      { yMin: 55, yMax: 92, sizeMin: 70, sizeMax: 135, delayMax: 1400, opacity: 1 },
       // front layer: bigger, bottom
-      { yMin: 72, yMax: 102, sizeMin: 110, sizeMax: 180, delayMax: 1900, opacity: 1 },
+      { yMin: 72, yMax: 105, sizeMin: 110, sizeMax: 185, delayMax: 1900, opacity: 1 },
     ];
 
     for (let i = 0; i < density; i++) {

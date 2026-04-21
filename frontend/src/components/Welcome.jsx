@@ -114,7 +114,7 @@ export default function Welcome() {
               “Eres como un pequeño boulevard de esperanzas.”
             </p>
             <footer className="mt-2 text-xs sm:text-sm text-purple-900/55 font-body">
-              — (Anónimo, 2025, p. 182)
+              — (Salvador, 2021, p. 182)
             </footer>
           </blockquote>
 

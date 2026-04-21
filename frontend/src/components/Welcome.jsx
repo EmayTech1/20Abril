@@ -109,9 +109,14 @@ export default function Welcome() {
             <br />
             <span className="font-serif-italic italic">Urvi</span>.
           </h1>
-          <p className="mt-6 max-w-xl text-lg sm:text-2xl text-purple-900/75 font-serif-italic italic fade-up fade-up-delay-2">
-            Eres como un pequeño boulevard de esperanzas.
-          </p>
+          <blockquote className="mt-6 max-w-xl fade-up fade-up-delay-2">
+            <p className="text-lg sm:text-2xl text-purple-900/75 font-serif-italic italic leading-snug">
+              “Eres como un pequeño boulevard de esperanzas.”
+            </p>
+            <footer className="mt-2 text-xs sm:text-sm text-purple-900/55 font-body">
+              — (Anónimo, 2025, p. 182)
+            </footer>
+          </blockquote>
 
           <div className="mt-8 flex flex-wrap items-center gap-3 fade-up fade-up-delay-3">
             <span className="inline-flex items-center gap-2 rounded-full bg-white/60 border border-white/70 backdrop-blur px-4 py-2 text-xs tracking-wider uppercase text-purple-900/70">
